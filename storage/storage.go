@@ -1,7 +1,7 @@
 package storage
 
 type Student struct {
-	name  string
-	age   int
-	grade int
+	Name  string
+	Age   int
+	Grade int
 }

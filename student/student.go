@@ -1,6 +1,7 @@
 package student
 
 import (
+	"Golang/storage"
 	"bufio"
 	"fmt"
 	"os"
@@ -9,14 +10,8 @@ import (
 	"strings"
 )
 
-type Student struct {
-	name  string
-	age   int
-	grade int
-}
-
 func NewStudent() {
-	m := make(map[string]*Student)
+	m := make(map[string]*storage.Student)
 	EOF := make(chan os.Signal, 1)
 	signal.Notify(EOF, os.Interrupt) // через ctrl+c при использовании sigint завершает без подтверждения через enter
 	defer func() {
@@ -40,10 +35,10 @@ func NewStudent() {
 		if err != nil {
 			panic(err)
 		}
-		m[nameOfStudent] = &Student{
-			name:  newName,
-			age:   newAge,
-			grade: newGrade,
+		m[nameOfStudent] = &storage.Student{
+			Name:  newName,
+			Age:   newAge,
+			Grade: newGrade,
 		}
 
 	}
